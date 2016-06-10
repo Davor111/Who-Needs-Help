@@ -10,11 +10,9 @@ h1 {
     background-color: floralwhite
 }
 
-#map {
-    padding: 20px; 
-    width:auto;
-    min-height:400px;
-    margin: 20px;
+.maps {
+    display:block; 
+    height:500px; 
 }
 
 #floating-panel {
