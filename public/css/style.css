@@ -5,6 +5,7 @@ body {
 h1 {
     font-family: 'Kreon', serif;
     margin-bottom: 40px;
+text-align: center;
 }
 .well {
     background-color: floralwhite
