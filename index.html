@@ -3,7 +3,7 @@
 
 <head>
     <title>WNH who needs help</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content=content= "initial-scale=1.0, user-scalable=no" >
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-route/angular-route.js"></script> 
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyBwNgo97tBHQC7ykjhIqkCOwjsKnrvGnIs&libraries=placeses,visualization,drawing,geometry,places"></script>
@@ -42,12 +42,12 @@
                
             </div>
 
-  <ng-map  default-style="false"  class="maps" center="[43.6650000, -79.4103000]">
-      <marker position='{{vm.positions}}' onclick="vm.map.showInfoWindow('foo-iw')"></marker>
+  <ng-map class="maps" center="[43.6650000, -79.4103000]">
+      <marker id = "mapMark" ng-repeat="pos in vm.positions" position="{{pos.lat}}, {{pos.lng}}"  on-click="vm.showDetail(e)"></marker>
 
     <info-window id="foo-iw">
         <div ng-non-bindable="">
-       <p>This is a test </p>
+          <p>This is a test!!!!</p>
         </div>
       </info-window>
 
