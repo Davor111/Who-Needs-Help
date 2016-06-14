@@ -90,12 +90,11 @@ app.controller('MarkerController', function ($compile, NgMap) {
   ];
 
   marker.addHelp = function(vm) {
+    
     marker.helpData.address = vm.place.formatted_address;
     marker.helpData.position = [vm.place.geometry.location.lat(), vm.place.geometry.location.lng()];
     marker.helpData.id = marker.helpLocations.length + 1;
     marker.helpLocations.push(marker.helpData);
-
-   // vm.position = [];
     marker.helpData = {};
     marker.map.hideInfoWindow('addHelp-iw');
   };
