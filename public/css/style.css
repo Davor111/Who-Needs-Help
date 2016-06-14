@@ -6,10 +6,16 @@ h1 {
     font-family: 'Kreon', serif;
     margin-bottom: 40px;
     text-align: center;
+    color: bisque;
+    border: solid ;
+    background-color: darksalmon
+}
+.lead {
+     color: bisque;
 }
 
 .well {
-    background-color: floralwhite
+    background-color: #DEAC9B
 }
 
 .well-sm {background-color: white}
