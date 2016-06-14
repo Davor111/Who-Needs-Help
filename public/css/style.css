@@ -1,5 +1,6 @@
 body {
-    padding-top: 50px;
+    padding-top: 10px;
+    background-color: ghostwhite
 }
 
 h1 {
@@ -7,11 +8,12 @@ h1 {
     margin-bottom: 40px;
     text-align: center;
     color: bisque;
-    border: solid ;
+    border: solid;
     background-color: darksalmon
 }
 .lead {
-     color: bisque;
+     color: white;
+     font-family: 'Kreon', serif;
 }
 
 .well {
