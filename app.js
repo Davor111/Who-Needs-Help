@@ -31,7 +31,7 @@ app.controller('MapController', function ($compile, NgMap) {
 
   vm.showMarkerDetail = function(e, id) {
     vm.markerID = id - 1;
-    console.log(vm.markerID)
+    console.log(vm.markerID);
     vm.map.showInfoWindow('showHelp-iw', id.toString());
   };
 

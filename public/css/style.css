@@ -16,7 +16,7 @@ h1 {
 
 .maps {
     display:block; 
-    height:600px; 
+    height:550px; 
     margin-top: 10px;
     border: 1px solid lightgray;;
 }
@@ -40,10 +40,6 @@ h1 {
   padding-left: 10px;
   max-width: 30%;
   min-width: 19%;
-}
-
-#floating-panel {
-
 }
 
 .red {
