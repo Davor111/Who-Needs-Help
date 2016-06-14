@@ -90,7 +90,7 @@ app.controller('MarkerController', function ($compile, NgMap) {
   ];
 
   marker.addHelp = function(vm) {
-    
+
     marker.helpData.address = vm.place.formatted_address;
     marker.helpData.position = [vm.place.geometry.location.lat(), vm.place.geometry.location.lng()];
     marker.helpData.id = marker.helpLocations.length + 1;
@@ -102,5 +102,13 @@ app.controller('MarkerController', function ($compile, NgMap) {
 
 
 
+
 });
+
+app.directive("googleMaps", function(){
+    return {
+      restrict: "E",
+      templateUrl: "public/templates/pages/maps/maps.html"
+    }
+  });
 

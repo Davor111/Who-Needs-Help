@@ -11,12 +11,16 @@ text-align: center;
     background-color: floralwhite
 }
 
+.well-sm {background-color: white}
+
 .maps {
     display:block; 
     height:600px; 
+    margin-top: 10px;
+    border: 1px solid lightgray;;
 }
 
-#floating-panel {
+#floating-panel-old {
   position: absolute;
   top: 220px;
   left: 35%;
@@ -30,6 +34,10 @@ text-align: center;
   padding-left: 10px;
   max-width: 30%;
   min-width: 19%;
+}
+
+#floating-panel {
+
 }
 
 .red {
