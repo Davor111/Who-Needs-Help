@@ -7,10 +7,7 @@ app.controller('MapController', function ($compile, NgMap) {
   vm.position = "";
 
   vm.types = "['address']";;
-  vm.markID = "test"
-
- 
-
+  vm.markerID = "";
 
   vm.placeChanged = function () {
 
@@ -19,12 +16,28 @@ app.controller('MapController', function ($compile, NgMap) {
     vm.map.setCenter(vm.place.geometry.location);
     vm.position = [vm.place.geometry.location.lat(), vm.place.geometry.location.lng()];
     vm.map.showInfoWindow('addHelp-iw', 'addHelp');
-  }
-
+  };
 
   vm.showDetail = function (e, markID) {
     vm.map.showInfoWindow(e, markID);
   };
+
+
+  vm.hideDetail = function() {
+    vm.map.hideInfoWindow('addHelp-iw');
+  };
+
+
+  vm.showMarkerDetail = function(e, id) {
+    vm.markerID = id - 1;
+    vm.map.showInfoWindow('showHelp-iw', id);
+  };
+
+
+  vm.removeMarker = function() {
+
+  };
+
 
   NgMap.getMap().then(function (map) {
     vm.map = map;
@@ -36,7 +49,6 @@ app.controller('MapController', function ($compile, NgMap) {
 
 app.controller('MarkerController', function () {
 
-
  this.helpLocations = [
 
     {
@@ -44,7 +56,7 @@ app.controller('MarkerController', function () {
       description: "We need help with the garden",
       priority: "low", //high, medium, low
       position: ["48.134519", "11.56519"],
-      id: "a"
+      id: "1"
     },
 
     {
@@ -52,15 +64,15 @@ app.controller('MarkerController', function () {
       description: "our basement is flooded",
       priority: "medium", //high, medium, low
       position: ["48.1377276", "11.5718083"],
-      id: "b"  // 48.1377276,11.5718083,17z
+      id: "2"  // 48.1377276,11.5718083,17z
     },
 
     {
-      name: "Thomas",
-      description: "our basement is flooded",
+      name: "John",
+      description: "There's an evil goldfish in our pond",
       priority: "high", //high, medium, low
       position: ["48.130273", "11.560228"],
-      id: "c"  
+      id: "3"  
     }
 
   ];
