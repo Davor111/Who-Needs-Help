@@ -19,7 +19,6 @@
 
         <div class="well">
             <h1>WHO NEEDS HELP?</h1>
-            <p class="lead text-center">Where is help needed?</p>
 
             <div ng-controller="MarkerController as marker">
 
@@ -34,7 +33,9 @@
                     </div>
 
                     <div class="col-sm-9">
-                        <div class="well well-sm">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Where is help needed?</div>
+                            <div class="panel-body">
                             <div id="floating-panel">
                                 <div class="input-group">
                                     <input ng-model = "vm.address" places-auto-complete component-restrictions="{country:'de'}" types="{{types}}" on-place-changed="vm.placeChanged()"
@@ -45,6 +46,7 @@
                                 </div>
                             </div>
                             <google-maps></google-maps>
+                        </div>
                         </div>
                     </div>
 
