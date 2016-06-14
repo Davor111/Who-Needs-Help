@@ -5,8 +5,9 @@ body {
 h1 {
     font-family: 'Kreon', serif;
     margin-bottom: 40px;
-text-align: center;
+    text-align: center;
 }
+
 .well {
     background-color: floralwhite
 }
@@ -20,6 +21,11 @@ text-align: center;
     border: 1px solid lightgray;;
 }
 
+.panel-heading {
+    font-weight: bold;
+    font-size: 150%;
+
+}
 #floating-panel-old {
   position: absolute;
   top: 220px;
@@ -43,4 +49,7 @@ text-align: center;
 .red {
     color: red;
     font-weight: bold;
+}
+.list-group-item {
+    cursor: pointer;
 }
