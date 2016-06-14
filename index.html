@@ -25,7 +25,7 @@
                     <div class="col-sm-12">
                         <div class="input-group">
                             <input places-auto-complete ng-model="vm.address" component-restrictions="{country:'de'}" types="{{types}}" on-place-changed="vm.placeChanged()"
-                                type="textbox" id="address" class="form-control" placeholder="Search for address" />
+                                type="textbox" id="address" class="form-control" placeholder="Add a request for help" />
                             <span class="input-group-btn">
                         <input id = "submit" class="btn btn-default" type="button" value= "Search">
                     </span>                
@@ -33,7 +33,14 @@
                     </div>
                 </div>
             </div>
+
 <div ng-controller="MarkerController as marker">
+    <ul>
+     <li ng-repeat = "name in marker.helpLocations">
+         {{name.name}}
+         </li>   
+    </ul>
+    <p ng-repeat = "name in marker.helpLocations" ></p>
             <ng-map class="maps" center="[48.1345191, 11.5651905]">
                 <marker id="addHelp" position="{{vm.position}}" on-click="vm.showDetail('addHelp-iw', 'addHelp')"></marker>
                 
@@ -41,32 +48,40 @@
 
                 <info-window id="showHelp-iw">
                     <div ng-non-bindable="">
-                        <h3>{{marker.helpLocations[vm.markerID].name}} needs help</h3>
-                        <p>{{marker.helpLocations[vm.markerID].description}}</p>
+                        <h3><span style="color:lightgreen;" class="glyphicon glyphicon-flag"></span>  {{marker.helpLocations[vm.markerID].name}} needs help: </h3>
+                        <p class = "lead"> "{{marker.helpLocations[vm.markerID].description}}" </p>
+                        <p>Address: {{marker.helpLocations[vm.markerID].address}}</p>
                         <p>{{marker.helpLocations[vm.markerID].priority}}</p>
                         <p>{{vm.markerID}}</p>
                         </div>
                 </info-window>
                
+
                 <info-window id="addHelp-iw">
                     <div ng-non-bindable="">
                         <h3><span style="color:orange;" class="glyphicon glyphicon-flag"></span> Add a call for help</h3>
                         <form role="form">
                             <div class="form-group">
                                 <label for="name">Your Name:</label>
-                                <input type="text" class="form-control" id="name">
+                                <input ng-model = "marker.helpData.name" type="text" class="form-control" id="name">
                             </div>
                             <div class="form-group">
                                 <label for="textfeld">What needs to be done:</label>
-                                <textarea  id="textfeld" class="form-control" ></textarea>
+                                <textarea  ng-model = "marker.helpData.description" id="textfeld" maxlength="200" class="form-control" ></textarea>
                             </div>
                             <div class="form-group">
-                                <label class="radio-inline"><input checked type="radio" name="optradio">Medium</label>
-                                <label class="radio-inline"><input type="radio" name="optradio">Low</label>
-                                <label class="radio-inline red"><input type="radio" name="optradio">High</label>
+                                <label for="address">Address:</label>
+                                <p id="address">{{vm.place.formatted_address}} <br> {{vm.place.geometry.location.lat() + ' ' +  vm.place.geometry.location.lng()}} </p>
                             </div>
                             <div class="form-group">
-                                <button type="submit" ng-click = "" class="btn btn-primary">Save your request</button>
+                                <label>How urgent is it?</label>
+                                <br>
+                                <label class="radio-inline"><input ng-model = "marker.helpData.priority"  type="radio" value = "medium" name="optradio" checked>Medium</label>
+                                <label class="radio-inline"><input ng-model = "marker.helpData.priority" type="radio" value = "low" name="optradio">Low</label>
+                                <label class="radio-inline red"><input ng-model = "marker.helpData.priority" type="radio" value = "high" name="optradio">High</label>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" ng-click = "marker.addHelp(vm)" class="btn btn-primary">Save your request</button>
                                  <button ng-click = "vm.hideDetail()" class="btn btn-danger pull-right">Cancel</button>
                             </div>
                            
