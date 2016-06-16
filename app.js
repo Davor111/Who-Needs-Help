@@ -3,18 +3,23 @@ var app = angular.module('WhoHelp', ['ngMap']);
 
 app.controller('MapController', function ($compile, NgMap) {
 
+ var geocoder = new google.maps.Geocoder();
   var vm = this;
   vm.position = "";
+  vm.markerAddress = "";
 
   vm.types = "['address']";;
   vm.markerID = "";
 
 
   vm.placeChanged = function () {
+    vm.markerAddress = "";
     vm.place = this.getPlace();
     console.log('location', vm.place.geometry.location);
+    //console.log('location place', vm.place.name);
     vm.map.setCenter(vm.place.geometry.location);
     vm.position = [vm.place.geometry.location.lat(), vm.place.geometry.location.lng()];
+    vm.markerAddress = vm.place.formatted_address;
     vm.map.showInfoWindow('addHelp-iw', 'addHelp');
   };
 
@@ -26,6 +31,31 @@ app.controller('MapController', function ($compile, NgMap) {
 
   vm.hideDetail = function() {
     vm.map.hideInfoWindow('addHelp-iw');
+  };
+
+  vm.addMarker = function(event) {
+  
+    var ll = event.latLng;
+    
+    console.log('location', event);
+    vm.position = event.latLng;
+
+    geocoder.geocode({'location': vm.position}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      if (results[1]) {
+        console.log(results[1].formatted_address);
+        vm.markerAddress = results[1].formatted_address; 
+        vm.map.showInfoWindow('addHelp-iw', 'addHelp');
+
+      } else {
+        window.alert('No results found');
+      }
+    } else {
+      window.alert('Geocoder failed due to: ' + status);
+    }
+    });
+  
+    
   };
 
 
@@ -56,7 +86,7 @@ app.controller('MarkerController', function ($compile, NgMap) {
 
    NgMap.getMap().then(function (map) {
     marker.map = map;
-  });
+  }); 
 
   marker.helpData = {}; 
   marker.helpLocations = [
@@ -92,8 +122,8 @@ app.controller('MarkerController', function ($compile, NgMap) {
 
   marker.addHelp = function(vm) {
 
-    marker.helpData.address = vm.place.formatted_address;
-    marker.helpData.position = [vm.place.geometry.location.lat(), vm.place.geometry.location.lng()];
+    marker.helpData.address = vm.markerAddress || vm.place.formatted_address;
+    marker.helpData.position = vm.position //[vm.place.geometry.location.lat(), vm.place.geometry.location.lng()];
     marker.helpData.id = marker.helpLocations.length + 1;
     marker.helpLocations.push(marker.helpData);
     marker.helpData = {};
