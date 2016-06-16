@@ -48,10 +48,12 @@ app.controller('MapController', function ($compile, NgMap) {
         vm.map.showInfoWindow('addHelp-iw', 'addHelp');
 
       } else {
-        window.alert('No results found');
+       vm.markerAddress = "Coordinates: " + ll.lat() + ", " + ll.lng(); 
+       vm.map.showInfoWindow('addHelp-iw', 'addHelp');
       }
     } else {
-      window.alert('Geocoder failed due to: ' + status);
+      vm.markerAddress = "Coordinates: " + ll.lat() + ", " + ll.lng(); 
+      vm.map.showInfoWindow('addHelp-iw', 'addHelp');
     }
     });
   
