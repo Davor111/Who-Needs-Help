@@ -38,9 +38,9 @@ app.controller('MapController', function ($compile, NgMap) {
     var ll = event.latLng;
     
     console.log('location', event);
-    vm.position = event.latLng;
+    vm.position = [ll.lat(), ll.lng()];
 
-    geocoder.geocode({'location': vm.position}, function(results, status) {
+    geocoder.geocode({'location': event.latLng}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       if (results[1]) {
         console.log(results[1].formatted_address);
