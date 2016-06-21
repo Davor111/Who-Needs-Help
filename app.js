@@ -51,7 +51,7 @@ app.controller('MapController', function ($compile, NgMap) {
        vm.markerAddress = "Coordinates: " + ll.lat() + ", " + ll.lng(); 
        vm.map.showInfoWindow('addHelp-iw', 'addHelp');
       }
-    } else {
+    } else { 
       vm.markerAddress = "Coordinates: " + ll.lat() + ", " + ll.lng(); 
       vm.map.showInfoWindow('addHelp-iw', 'addHelp');
     }

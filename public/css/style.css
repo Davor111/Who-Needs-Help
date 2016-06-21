@@ -6,21 +6,35 @@ body {
 h1 {
     font-family: 'Kreon', serif;
     margin-bottom: 40px;
+    padding: 10px;
     text-align: center;
-    color: bisque;
+    color: cadetblue;
     border: solid;
-    background-color: darksalmon
+    border-radius: 10px;
+    background-color: ghostwhite;
+}
+.header {
+    max-width: 80%;
+    float: none;
+    margin: 0px auto 80px auto;
 }
 .lead {
-     color: white;
+     color: dimgray;
      font-family: 'Kreon', serif;
+     
 }
 
 .well {
-    background-color: #DEAC9B
+    background-color: gainsboro;
+  
 }
 
 .well-sm {background-color: white}
+
+.people {
+    max-height: 620px;
+    overflow: auto;
+}
 
 .maps {
     display:block; 
@@ -32,8 +46,9 @@ h1 {
 .panel-heading {
     font-weight: bold;
     font-size: 150%;
-
+    color: dimgray;
 }
+
 #floating-panel-old {
   position: absolute;
   top: 220px;

@@ -18,14 +18,15 @@
     <div ng-controller="MapController as vm" class="container-fluid">
 
         <div class="well">
-            <h1>WHO NEEDS HELP?</h1>
+            <div class="text-center header"><h1>WHO NEEDS HELP?</h1></div>
+
             <p class = "lead text-center">An easy real-time web application to coordinate help in an area with Google Maps and Socket.io. </p>
             <div ng-controller="MarkerController as marker">
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="panel panel-default">
-                             <div class="panel-heading">People in need</div>
-                        <div class="list-group">
+                             <div class="panel-heading ">People in need</div>
+                        <div class="list-group people">
                             <a ng-click="vm.showMarkerDetail('', people.id)" class="list-group-item" ng-repeat="people in marker.helpLocations">
                                 <span ><b>{{people.name}}</b> <br> <i>in (@{{people.address}})</i></span>
                             </a>
@@ -59,10 +60,6 @@
             </div>
         </div>
     </div>
-
-
-
     <script src="app.js"></script>
 </body>
-
 </html>
