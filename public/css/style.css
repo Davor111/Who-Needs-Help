@@ -43,7 +43,7 @@ h1 {
     border: 1px solid lightgray;;
 }
 
-.panel-heading {
+.panel-default>.panel-heading {
     font-weight: bold;
     font-size: 150%;
     color: dimgray;

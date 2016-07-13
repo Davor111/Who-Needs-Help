@@ -10,7 +10,7 @@
             <p> "{{marker.helpLocations[vm.markerID].description}}" </p>
             <p>Address: {{marker.helpLocations[vm.markerID].address}}</p>
             <p>{{marker.helpLocations[vm.markerID].priority}}</p>
-            <p>{{vm.markerID}}</p>
+            <p>{{marker.markerPrio(vm)}}</p>
         </div>
     </info-window>
 
@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label>How urgent is it?</label>
                     <br>
-                    <label class="radio-inline"><input ng-model = "marker.helpData.priority"  type="radio" value = "medium" name="optradio" checked>Medium</label>
+                    <label class="radio-inline"><input ng-model = "marker.helpData.priority"  type="radio" value = "medium" name="optradio">Medium</label>
                     <label class="radio-inline"><input ng-model = "marker.helpData.priority" type="radio" value = "low" name="optradio">Low</label>
                     <label class="radio-inline red"><input ng-model = "marker.helpData.priority" type="radio" value = "high" name="optradio">High</label>
                 </div>

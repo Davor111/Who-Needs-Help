@@ -85,12 +85,14 @@ app.controller('MapController', function ($compile, NgMap) {
 app.controller('MarkerController', function ($compile, NgMap) {
 
   var marker = this; 
+ 
 
    NgMap.getMap().then(function (map) {
     marker.map = map;
   }); 
 
   marker.helpData = {}; 
+  marker.helpData.priority = "medium";
   marker.helpLocations = [
 
     {
@@ -129,11 +131,15 @@ app.controller('MarkerController', function ($compile, NgMap) {
     marker.helpData.id = marker.helpLocations.length + 1;
     marker.helpLocations.push(marker.helpData);
     marker.helpData = {};
+    marker.helpData.priority = "medium";
     marker.map.hideInfoWindow('addHelp-iw');
   };
 
 
-
+marker.markerPrio = function(vm) {
+  var markPrio = marker.helpLocations[vm.markerID].priority;
+  return ;
+}
 
 
 });
